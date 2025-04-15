@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestione Utenti IT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>💼 Gestione Utenti e Materiali IT</h1>
+      <nav>
+        <a href="inventario.html">📦 Inventario Generale</a>
+        <button onclick="exportToCSV()">⬇️ Esporta in CSV</button>
+      </nav>
+    </header>
+
+    <section id="riepilogoAzienda" class="riepilogo-box"></section>
+
+    <section class="azienda-section">
+      <h2>🔍 Seleziona Azienda</h2>
+      <select id="aziendaSelect" onchange="aggiornaListaUtenti()">
+        <option value="YMIT">YMIT</option>
+        <option value="YMR">YMR</option>
+      </select>
+      <input type="text" id="search" placeholder="Cerca utente..." oninput="filtraUtenti()">
+    </section>
+
+    <section class="utente-section">
+      <h2>👤 Crea Nuovo Utente</h2>
+      <input type="text" id="nomeUtente" placeholder="Nome Utente">
+      <button onclick="creaUtente()">➕ Crea</button>
+    </section>
+
+    <section>
+      <h2>👥 Lista Utenti</h2>
+      <div id="utentiAziende" class="utenti-box"></div>
+    </section>
+
+    <section id="materialiAssegnati" style="display: none;">
+      <h2>📋 Materiali Assegnati a <span id="utenteNome"></span></h2>
+      <ul id="listaMateriali"></ul>
+    </section>
+
+    <section id="modificaMateriale" style="display: none;">
+      <h2>➕ Assegna Materiale</h2>
+      <select id="tipoMateriale" onchange="mostraDettagliMateriale(this.value)">
+        <option value="laptop">Laptop</option>
+        <option value="telefono">Telefono</option>
+        <option value="sim">SIM</option>
+        <option value="monitor">Monitor</option>
+        <option value="docking">Docking</option>
+      </select>
+      <div id="dettagliMateriale"></div>
+      <button onclick="aggiungiMateriale()">💾 Aggiungi</button>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
